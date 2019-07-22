@@ -19,6 +19,7 @@ iris.to_csv('iris_output.csv',index=False)
 ```
 
 ##### 3.Design a simple function to work on one line Compare the difference in speed between applyyy and itertuples
+方法1
 ```python
 #itertuples
 %%timeit 
@@ -32,10 +33,27 @@ def text_function(row):
 %%timeit    
 iris.apply(text_function)
 ```
+方法2
+```python
+iris.columns = ['A', 'B', 'C', 'D', 'class'] 
+def text_function(row):
+    return 'class: {class}, A:{A},B:{B},C:{C},D:{D}'.format(**row.to_dict())
 
-利用上方程式碼跑出來的結果為：
-itertuples: 15.8 ms ± 165 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
-apply: 8.15 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+%%timeit 
+print(iris.apply(text_function, axis=1))
+
+%%timeit
+for ir in iris.itertuples():
+    print(ir)
+```
+
+apply用的function是傳入serier<br>
+itertuples遞迴中的ir是dataframe<br>
+
+
+利用上方程式碼跑出來的結果為：<br>
+itertuples: 15.8 ms ± 165 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)<br>
+apply: 8.15 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)<br>
 apply比iteruples快了將近快一半的時間
 
 ##### 4.Write a context manger named "prf_plot" to plot precision/recall/F1
