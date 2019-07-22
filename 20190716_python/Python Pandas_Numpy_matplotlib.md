@@ -81,12 +81,21 @@ def prf_plot(fig, subplot, size=5):
     #fx=2xy-fy
     #fx=(2x-f)y
     #y=fx/(2x-f)
-    #f_scores = np.arange(0.1,1,0.1)#start,end,step
-    f_scores = np.linspace(0.1, 0.9, num=10)
+
+    ##test
+
+    f_scores = np.arange(0.1,1,0.1)#start,end,step
+    #f_scores = np.linspace(0.1, 0.9, num=9)
     for f_score in f_scores:
-        x = np.linspace(0.01, 1)###########****
+        #x = np.linspace(0.001, 1)###########****
+        x=np.arange(0,1,0.0001)
+        #x=np.sort(np.random.rand(1000))
+        #methon2
         y = f_score * x / (2 * x - f_score)
-        ax.plot(x[y>0], y[y>0], color='gray', alpha=0.2)
+        ax.plot(x[y>0], y[y>0], color='gray', alpha=0.5)
+        plot.text(1.01,r[-1],'F={:0.1f}'.format((i+1)*0.1),color)
+        #alpha 是線的寬度
+        plo
     
     
     # Plot the data
@@ -94,7 +103,6 @@ def prf_plot(fig, subplot, size=5):
     
     title = ax.get_title()
     ax.set_title(title)
-
 # initialize a square figure
 fig = plt.figure(figsize=(6, 6))
 
