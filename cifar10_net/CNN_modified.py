@@ -88,20 +88,22 @@ def lenet_modified_twoConv():
     model.summary()
     return model
 
-def lenet_modified_twoConv_withBN():
+def lenet3x3_withBN():
     input_layer = Input(shape=(32,32,3))
     x = BN()(input_layer)
-    x = Conv2D(filters=32, kernel_size=(3,3))(x)
-    x = Activation('relu')(x)
-    x = Conv2D(filters=32, kernel_size=(3,3))(x)
+    x = Conv2D(filters=6, kernel_size=(3,3))(x)
+    x = BN()(x)
     x = Activation('relu')(x)
     x = MaxPool2D()(x)
-    x = Conv2D(filters=64, kernel_size=(3,3))(x)
-    x = Activation('relu')(x)
-    x = Conv2D(filters=64, kernel_size=(3,3))(x)
+    x = Conv2D(filters=16, kernel_size=(3,3))(x)
+    x = BN()(x)
     x = Activation('relu')(x)
     x = MaxPool2D()(x)
     x = Flatten()(x)
+    x = Dense(128, activation='relu')(x)
+    x = BN()(x)
+    x = Dense(84, activation='relu')(x)
+    x = BN()(x)
     output_layer = Dense(10, activation='softmax')(x)
     model = Model(input_layer, output_layer)
     model.compile(optimizer='Adagrad', loss='categorical_crossentropy', metrics=['accuracy'])
@@ -129,6 +131,8 @@ trianing_history = lenet_modified_twoConv().fit(x=x_train, y=fit_y_train, valida
 save_history("lenet_modified_twoConv_5epochs",trianing_history)
 trianing_history = lenet().fit(x=x_train, y=fit_y_train, validation_data=[x_test, pred_y_test], epochs=5, batch_size=64)
 save_history("lenet_5epochs",trianing_history)
+trianing_history = lenet3x3_withBN().fit(x=x_train, y=fit_y_train, validation_data=[x_test, pred_y_test], epochs=5, batch_size=64)
+save_history("lenet3x3_withBN_5epochs",trianing_history)
 
 
 
