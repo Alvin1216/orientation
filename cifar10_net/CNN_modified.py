@@ -6,6 +6,7 @@ Created on Tue Jul 30 15:12:37 2019
 """
 
 import numpy as np
+import pickle
 #modified CNN
 from matplotlib import pyplot as plt
 from keras.models import Model
@@ -88,6 +89,30 @@ def lenet_modified_twoConv():
     model.summary()
     return model
 
+def lenet_modified_twoConv_withBN():
+    input_layer = Input(shape=(32,32,3))
+    x = BN()(input_layer)
+    x = Conv2D(filters=32, kernel_size=(3,3))(input_layer)
+    x = BN()(x)
+    x = Activation('relu')(x)
+    x = Conv2D(filters=32, kernel_size=(3,3))(x)
+    x = BN()(x)
+    x = Activation('relu')(x)
+    x = MaxPool2D()(x)
+    x = Conv2D(filters=64, kernel_size=(3,3))(x)
+    x = BN()(x)
+    x = Activation('relu')(x)
+    x = Conv2D(filters=64, kernel_size=(3,3))(x)
+    x = BN()(x)
+    x = Activation('relu')(x)
+    x = MaxPool2D()(x)
+    x = Flatten()(x)
+    output_layer = Dense(10, activation='softmax')(x)
+    model = Model(input_layer, output_layer)
+    model.compile(optimizer='Adagrad', loss='categorical_crossentropy', metrics=['accuracy'])
+    model.summary()
+    return model
+
 def lenet3x3_withBN():
     input_layer = Input(shape=(32,32,3))
     x = BN()(input_layer)
@@ -133,6 +158,9 @@ trianing_history = lenet().fit(x=x_train, y=fit_y_train, validation_data=[x_test
 save_history("lenet_5epochs",trianing_history)
 trianing_history = lenet3x3_withBN().fit(x=x_train, y=fit_y_train, validation_data=[x_test, pred_y_test], epochs=5, batch_size=64)
 save_history("lenet3x3_withBN_5epochs",trianing_history)
+trianing_history = lenet_modified_twoConv_withBN().fit(x=x_train, y=fit_y_train, validation_data=[x_test, pred_y_test], epochs=15, batch_size=64)
+save_history("lenet_modified_twoConv_withBN_15epochs",trianing_history)
+
 
 
 
