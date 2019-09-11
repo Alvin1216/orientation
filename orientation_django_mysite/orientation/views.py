@@ -51,7 +51,7 @@ def return_song_with_type(request):
 
         # 去除重複的值(dictionary)
         # from https://stackoverflow.com/questions/9427163/remove-duplicate-dict-in-list-in-python
-        record = deleteDuplicatedElementFromDic(record)
+        record = delete_duplicated_element_from_dic(record)
         print(len(record))
 
         # 去除重複的值(list)_遺跡
@@ -90,7 +90,7 @@ def return_song_with_type(request):
 
         # 去除重複的值(dictionary)
         # from https://stackoverflow.com/questions/9427163/remove-duplicate-dict-in-list-in-python
-        record = deleteDuplicatedElementFromDic(record)
+        record = delete_duplicated_element_from_dic(record)
         print(len(record))
 
         # JsonResponse可以直接吃list和dic
