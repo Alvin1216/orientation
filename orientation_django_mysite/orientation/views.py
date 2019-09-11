@@ -10,11 +10,11 @@ import datetime
 # import json
 # Create your views here.
 
-def deleteDuplicatedElementFromList(listA):
+def delete_duplicated_element_from_ist(listA):
     return sorted(set(listA), key=listA.index)
 
 
-def deleteDuplicatedElementFromDic(dicA):
+def delete_duplicated_element_from_dic(dicA):
     seen = set()
     new_dic = []
     for d in dicA:
