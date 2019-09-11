@@ -2,22 +2,23 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>IIR OCAMP</title>
-        <style>
+<head>
+    <title>IIR OCAMP</title>
+    <style>
             body {
                background-color: lightyellow;
             }
             em {
                 color: LightSeaGreen;
             }
-        </style>
-    </head>
-    <body>
-        <h1>Hello IIR!</h1>
-        <div>My name is {{name}}</div>
-        <div>How I look?</div>
-        <div><img src="{% static 'myapp/img/pika.jpg' %}" title="大頭貼" width="800px" height="450px"></div>
-        <em>Now is {{ current_time }}</em>
-    </body>
+
+    </style>
+</head>
+<body>
+<h1>Hello IIR!</h1>
+<div>My name is {{name}}</div>
+<div>How I look?</div>
+<div><img src="{% static 'myapp/img/pika.jpg' %}" title="大頭貼" width="800px" height="450px"></div>
+<em>Now is {{ current_time }}</em>
+</body>
 </html>

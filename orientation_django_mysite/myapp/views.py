@@ -24,7 +24,7 @@ def tag_page(request):
     return render(request, 'myapp/tag.html', locals())
 
 
-def createUser(request):
+def create_user(request):
     u = User.objects.create(name='alvin')
     u.save()
     ui = UserInfo.objects.create(user_id=u, age=23)
@@ -32,7 +32,7 @@ def createUser(request):
     return JsonResponse({'state': 'success'})
 
 
-def getUser(request):
+def get_user_list(request):
     # find all the people
     U = User.objects.all()
 
@@ -46,7 +46,7 @@ def getUser(request):
     return JsonResponse({'userList': nameList})
 
 
-def getAge(request):
+def get_user_agelist(request):
     # only find the name is lisa
     U = User.objects.filter(name='lisa')
     print(U)

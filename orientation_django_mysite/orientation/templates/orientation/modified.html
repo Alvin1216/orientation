@@ -1,60 +1,62 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <head>
     <meta charset="utf-8">
     <title>Modified Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-                <a class="navbar-brand" href="#">Modified Data</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button> 
-        
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="../insert/">insert</a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="../modified/">modified<span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../delete/">delete</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="../search/">search</a>
-                  </li>
-                </ul>
-              </div>
-    </nav>
-    <div class="container">
-        <br>
-        <br>   
-        <br>      
-    </div>
-    <div class="container">
-        <form action="" method="POST" name="form1">
-                {% csrf_token %}  <!-- 啟動CSRF防護，保護伺服器避免被攻擊 -->
-                <div class="form-group">
-                    <div>
-                        <!--<p font size="5">Search by the name of a song</p>-->
-                        <label>Song ID</label>
-                        <p><input type="text" name="id" placeholder="例如：808(可在Search中找到)" class="form-control"></p>
-                        <label>Song Name</label>
-                        <p><input type="text" name="song" placeholder="例如：淘汰" class="form-control"></p>
-                        <label>Artist Name</label>
-                        <p><input type="text" name="artist" placeholder="例如：陳奕迅" class="form-control"></p>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-    </div>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">Modified Data</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="container">
-        <p>{{output_string}}</p>        
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="../insert/">insert</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="../modified/">modified<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../delete/">delete</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../search/">search</a>
+            </li>
+        </ul>
     </div>
+</nav>
+<div class="container">
+    <br>
+    <br>
+    <br>
+</div>
+<div class="container">
+    <form action="" method="POST" name="form1">
+        {% csrf_token %}  <!-- 啟動CSRF防護，保護伺服器避免被攻擊 -->
+        <div class="form-group">
+            <div>
+                <!--<p font size="5">Search by the name of a song</p>-->
+                <label>Song ID</label>
+                <p><input type="text" name="id" placeholder="例如：808(可在Search中找到)" class="form-control"></p>
+                <label>Song Name</label>
+                <p><input type="text" name="song" placeholder="例如：淘汰" class="form-control"></p>
+                <label>Artist Name</label>
+                <p><input type="text" name="artist" placeholder="例如：陳奕迅" class="form-control"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="container">
+    <p>{{output_string}}</p>
+</div>
 </body>
 </html>

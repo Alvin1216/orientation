@@ -1,35 +1,37 @@
 <!-- index.html -->
 {% load staticfiles %}
 <!DOCTYPE html>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <html>
-    <head>
-        <title>IIR OCAMP</title>
-        <style>
+<head>
+    <title>IIR OCAMP</title>
+    <style>
             body {
                background-color: lightyellow;
             }
             em {
                 color: LightSeaGreen;
             }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <form action="" method="POST" name="form1">
-                    {% csrf_token %}  <!-- 啟動CSRF防護，保護伺服器避免被攻擊 -->
-                    <div class="form-group">
-                        <div>
-                            <!--<p font size="5">Search by the name of a song</p>-->
-                            <label>Song name</label>
-                            <p><input type="text" name="song" placeholder="例如：淘汰" class="form-control"></p>
-                            <label>Artist Name</label>
-                            <p><input type="text" name="artist" placeholder="例如：淘汰" class="form-control"></p>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                    
-                </form>
-    </div>
-    </body>
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <form action="" method="POST" name="form1">
+        {% csrf_token %}  <!-- 啟動CSRF防護，保護伺服器避免被攻擊 -->
+        <div class="form-group">
+            <div>
+                <!--<p font size="5">Search by the name of a song</p>-->
+                <label>Song name</label>
+                <p><input type="text" name="song" placeholder="例如：淘汰" class="form-control"></p>
+                <label>Artist Name</label>
+                <p><input type="text" name="artist" placeholder="例如：淘汰" class="form-control"></p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+</div>
+</body>
 </html>

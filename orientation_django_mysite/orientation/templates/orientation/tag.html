@@ -2,27 +2,31 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Template tag</title>
-        <style>
+<head>
+    <title>Template tag</title>
+    <style>
             body {
                background-color: lightyellow;
             }
-        </style>
-    </head>
-    <body>
-        <h2>Django template tag</h2>
-        <h3>For Loop : </h3>
-        {% for animal in animals%}
-            <div>{{animal}}</div>
-            {% if animal == 'cat' %}
-                <div>喵！</div><br>
-            {% elif animal == 'dog' %}
-                <div>旺！</div><br>
-            {% else %}
-                <div>Pika~Pika</div><br>
-            {% endif %}
-        {% endfor %}
 
-    </body>
+    </style>
+</head>
+<body>
+<h2>Django template tag</h2>
+<h3>For Loop : </h3>
+{% for animal in animals%}
+<div>{{animal}}</div>
+{% if animal == 'cat' %}
+<div>喵！</div>
+<br>
+{% elif animal == 'dog' %}
+<div>旺！</div>
+<br>
+{% else %}
+<div>Pika~Pika</div>
+<br>
+{% endif %}
+{% endfor %}
+
+</body>
 </html>

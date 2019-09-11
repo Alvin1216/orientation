@@ -16,28 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from myapp import views
-#from package import module
-#下面用的名字就是這個modele的檔名
-#這個例子就是myapp這個package，裡面的views.py這個module
-#想用views.py之中的函式hello_world
-#直接views.hello_world就好
+# from package import module
+# 下面用的名字就是這個modele的檔名
+# 這個例子就是myapp這個package，裡面的views.py這個module
+# 想用views.py之中的函式hello_world
+# 直接views.hello_world就好
 import orientation.views as orientation_view
-#import 某個package中(也就是某個檔案夾中，檔案夾中要有_init.py，才可以這樣做)
-#，裡面某一個module(也就是裡面某個.py檔，而這個.py檔中有很多個函式可以調用)
-#怕名字衝突，所以用as直接重新命名成orientation_view
-#import package.module as <new_name>
+
+# import 某個package中(也就是某個檔案夾中，檔案夾中要有_init.py，才可以這樣做)
+# ，裡面某一個module(也就是裡面某個.py檔，而這個.py檔中有很多個函式可以調用)
+# 怕名字衝突，所以用as直接重新命名成orientation_view
+# import package.module as <new_name>
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.hello_world),
     path('', views.index),
     path('tag/', views.tag_page),
-    path("createUser/", views.createUser),
-    path("getUser/", views.getUser),
-    path("getAge/", views.getAge),
-    path("getType/",orientation_view.return_song_with_type),
-    path("insert/",orientation_view.insert_song),
-    path("delete/",orientation_view.delete_song),
-    path("modified/",orientation_view.modified_song),
-    path("search/",orientation_view.search_song),
+    path("createUser/", views.create_user),
+    path("getUser/", views.get_user_list),
+    path("getAge/", views.get_user_agelist),
+    path("getType/", orientation_view.return_song_with_type),
+    path("insert/", orientation_view.insert_song),
+    path("delete/", orientation_view.delete_song),
+    path("modified/", orientation_view.modified_song),
+    path("search/", orientation_view.search_song),
 ]
