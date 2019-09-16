@@ -41,9 +41,9 @@ def produce_random_data(data_size=50):
         y.append(round(now_y,3))
         
     #畫圖 draw a picture
-    plt.scatter(x,y)
-    plt.xlabel('x')
-    plt.ylabel('y')
+    #plt.scatter(x,y)
+    #plt.xlabel('x')
+    #plt.ylabel('y')
     
     return x,y
     
@@ -72,10 +72,31 @@ for i in range(epochs):
     print('epochs='+str(i)+' loss='+str(loss))
     print('predict_a='+str(predict_a)+' predict_b='+str(predict_b))
     
-print (m, c)
 
+#random_x,random_y=produce_random_data(10)
+plt.scatter(X,Y,color='r',label = "random point")
+    
+px=[]
+py=[]
+rx=[]
+ry=[]
+for i in range(10):
+    px.append(i)
+    rx.append(i)
+    py.append(predict_a*i+predict_b)
+    ry.append(real_a*i+real_b)
 
-def numerical_diff(f,x):
+plt.plot(px, py,color='blue',label = "predict")
+plt.plot(rx, ry,color='black',label = "real")
+plt.xlabel('x')
+plt.ylabel('y')
+plt.title("Linear Regression")
+print('predict: Y='+str(predict_a)+'X+'+str(predict_b))
+print('real: Y='+str(real_a)+'X'+str(real_b))
+plt.legend(loc='lower right')
+    
+    
+
     
 
 
